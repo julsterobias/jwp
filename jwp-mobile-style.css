@@ -1,0 +1,341 @@
+/*
+
+Theme Name: jwptemplate
+Description: Simplified wordpress CMS template where you can create your own custom post types, shorcodes and widgets in no time. jwp will provide you many features in a package to avoid too much plugin installation in your website.
+Author: Juls Terobias
+Version: audrey
+
+*/
+ 
+ body,html{
+	 margin:0px !important;
+	 font-size:13px;
+	 color:#6d6c6c;
+	 padding:0px;
+	 overflow-x:hidden;
+	 font-family: 'Noto Sans',Arial, Helvetica, sans-serif
+ }
+ .wrapper{
+	 width:100%;
+	 position:absolute;
+	 z-index:999;
+	 background:#FFF;
+	 min-height:100%;
+ }
+ .paddmobile{
+	 padding-left:10px;
+	 padding-right:10px;
+	 height:100%;
+ }
+ .left{
+	/* float:left;*/
+	float:none !important;
+ }
+ .right{
+	/* float:right;*/
+	float:none !important;
+ }
+ .clear{
+	 clear:both;
+ }
+ .body .padd{
+	 padding:10px;
+ }
+
+ .header .blogname{
+	 padding:10px;
+	 margin-bottom:0px;
+ }
+ .body{
+	 margin-top:0px;
+	 min-height:100%;
+ }
+ .body .left{
+	 width:100%;
+ }
+ .body .right{
+	 width:100%;
+	 
+
+ }
+  .breadcrumbs{
+	 font-size:11px;
+
+	 text-align:right;
+ }
+ .footer{
+	 min-height:100px;
+ }
+ .menunav{
+	 background:#708ebf;
+	 display:none !important;
+ }
+ .menunav ul{
+	 margin:0px;
+	 padding:0px;
+ }
+ 
+ .menunav ul li{
+	 float:left;
+ }
+ .menunav ul li{
+	 list-style:none;
+ }
+ .menunav ul li:hover{
+	 background:#5373a6;
+ }
+ .menunav ul li a{
+	 display:block;
+	 padding:15px 20px;
+	 color:#FFFFFF;
+ }
+ .menunav ul li a:hover{
+	 color:#CCC;
+ }
+  .current-page-ancestor, .current-menu-item{
+	  background:#5373a6;
+	  color:#CCC;
+  }
+ .search{
+	 padding-top:0px;
+ }
+ input[type='text'], textarea, input[type='password']{
+	 padding:10px 10px;
+	 border:1px solid #bdcfec;
+	 background:#f2f5fa;
+	 font-family:'Noto Sans',Arial, Helvetica, sans-serif;
+	 font-size:13px;
+	 color:#6d6c6c;
+	 width:92%;
+	 display:block;
+ }
+ input[type='text']:focus, textarea:focus, input[type='password']:focus{
+	 background:#f8fbff;
+	 border:1px dashed #bdcfec;
+ }
+  input[type='submit']:active{
+	 background:#4a6a9f;
+ }
+ a{
+	 text-decoration:none;
+	 color:#708ebf;
+ }
+ a:hover{
+	 color:#395b92;
+	 text-decoration:none;
+ }
+ 
+ /* Content */
+  .entry-title{
+	  margin-top:0px;
+	  margin-bottom:5px;
+ }
+ .post{
+	 border-bottom:1px dotted #CCCCCC;
+	 padding-bottom:15px;
+ }
+ 
+ /*image CSS*/
+ 
+ img.aligncenter{
+ 	display: block;
+    margin-left: auto;
+    margin-right: auto;
+	margin-bottom:10px;
+	margin-top:10px;
+ }
+ img.alignleft{
+	 float:left;
+	 margin-bottom:10px;
+	 margin-right:10px;
+ }
+  img.alignright{
+	 float:right;
+	 margin-bottom:10px;
+	 margin-left:10px;
+ }
+ 
+  /*widgets*/
+  ul.jwpwidget{
+	  margin:0px;
+	  padding:0px;
+	  padding-left:0px;
+  }
+  ul.jwpwidget li{
+	  list-style:none;
+  }
+  
+  ul.jwpwidget ul {
+	  margin:0px;
+	  padding:0px;
+  }
+  .widget-title{
+	  border-bottom:1px dotted #CCCCCC;
+	  padding-bottom:5px;
+	  margin-bottom:5px;
+  }
+  
+  /*comment CSS*/
+  .children li{
+	  list-style:lower-alpha;
+	  border-bottom:none !important;
+  }
+  .commentlist li{
+
+/*	  border-bottom:1px solid #F4F4F4;*/
+  }
+  .reply{
+	  margin-bottom:10px;
+  }
+  .commentmetadata{
+	  font-size:10px;
+	  margin-top:5px;
+  }
+  .comment-author img{
+	  float:left;
+	  margin-right:5px;
+	  margin-bottom:5px;
+  }
+  .comment-author cite{
+	  display:block;
+  }
+  .comment p.comment-awaiting-moderation{
+	  clear:both;
+	  margin-top:15px;
+  }
+  .comment section{
+	  clear:both;
+	  padding:10px;
+	  padding-bottom:5px;
+  }
+  .reply span{
+	  font-size:0px;
+	  padding:3px;
+  }
+  .comment-form p{
+	  margin-bottom:0px;
+  }
+  
+  /*footer*/
+  .footer{
+	  margin-top:15px;
+	  padding-top:15px;
+	  font-size:10px;
+  }
+  #menu-footer{
+	  margin:0px;
+	  padding:0px;
+  }
+  #menu-footer li{
+	  list-style:none;
+	  float:none;
+	  display:inline;
+  }
+  #menu-footer li a{
+	  display:inline;
+	  padding-right:10px;
+	  padding-left:10px;
+	  font-size:10px;
+  }
+  #menu-footer .current-page-ancestor,#menu-footer .current-menu-item{
+	  background:none;
+	  color:inherit;
+  }
+  .mobilemenu{
+	  display:block;
+	  padding:10px;
+	  padding-right:0px;
+	   background:#3e5e92;
+	   overflow:hidden;
+	   height:95%;
+	  
+  }
+  .mobilemenu ul{
+	  margin:0px;
+	  padding:0px;
+  }
+  .mobilemenu ul li ul{
+	  padding-left:20px;
+  }
+  .mobilemenu li a{
+	  display:block;
+	  color:#FFFFFF;
+	  padding:10px;
+	  border-bottom:1px solid #5373a6;
+	  padding:10px 10px;
+  }
+  .mobilemenu .current-page-ancestor{
+	  background:none;
+  }
+  .mobilemenu .current-menu-item{
+	  background:#5373a6;
+	  padding-left:10px;
+  }
+  .mobilemenu li a:hover{
+  }
+  .mobilemenu li{
+	  list-style:none;
+  }
+  .search_form{
+	  display:none;
+  }
+  .mobilesform input{
+	  padding:5px !important;
+  }
+  .mobiletop{
+	  display:block;
+
+	  background:#708ebf;
+	
+	  width:100%;
+
+  }
+  .mobiletoppadd{
+	  padding:10px;
+  }
+
+  .mobileright{
+	  float:right;
+  }
+  .mobilenav{
+	  width:32px;
+	  height:32px;
+	  float:left;
+  }
+  .mobilesform{
+	  margin:0px;
+	  float:right;
+ display:none; 
+  }
+  
+  .mobilesform form{
+	  margin:0px;
+	   
+  }
+  .mobilesform form input{
+	  width:200px;
+	  margin:0px;
+	  margin-right:10px;
+	
+  }
+  
+  #open{
+	  background:url(assets/images/icons.png) 0px -76px no-repeat;
+  }
+  #close{
+	   background:url(assets/images/icons.png) top left no-repeat;
+  }
+  .mobilesearch{
+	  width:32px;
+	  height:32px;
+	  background:url(assets/images/icons.png) 0px -39px no-repeat;
+  }
+  .newmobilenav{
+	  
+	  position:fixed;
+	 background:#3E5E92;
+	  width:250px;
+	  height:100%;
+	/*  margin-left:-50%;*/
+	  overflow-y:auto;
+  }

@@ -1,0 +1,121 @@
+@import global.sass
+
+a
+	color: $blue
+	text-decoration: none
+
+a:hover
+	color: $blue
+
+
+header
+	height: 100%
+	background: url(../images/hero.jpg) center no-repeat
+	background-size: cover
+
+	.container
+		position: relative
+		height: 100%
+
+	span
+		position: absolute
+		height: 100%
+		left: 0
+		right: 0
+		background: rgba(0,0,0,0.8)
+		z-index: 0
+
+	.jwp_title
+		position: absolute
+		left: 50%
+		top: 50%
+		transform: translate(-50%,-50%)
+		color: $white
+		text-align: center
+		width: 100%
+		padding: 20px
+
+		h1
+			font-size: 110px
+			margin-bottom: 30px
+		h2
+			font-size: 40px
+			margin-bottom: 20px
+
+		.ver
+			margin-top: 70px
+
+	nav
+		text-align: center
+
+		ul
+			margin: 0px
+			padding: 0px
+			padding-top: 50px
+
+		li
+			display: inline-block
+
+			a
+				display: block
+				color: $white
+				padding: 15px
+
+			a:hover
+				color: $grey
+
+
+.jwp_about
+	background: $grey
+
+	h3
+		margin-bottom: 30px
+
+.jwp_features
+	
+	h3
+		margin-bottom: 40px
+
+	span
+		display: block
+		margin-bottom: 30px
+
+.jwp_download
+	background: $grey
+
+	h3
+		margin-bottom: 30px
+
+	.container_dl
+		max-width: 200px
+
+		.dl
+			display: inline-block
+			padding: 10px 15px
+			background: #e6e5e5
+			border: 1px solid #c3c3c3
+			color: $black
+			text-decoration: none
+
+		.dl:hover
+			background: $grey
+
+
+.jwp_author
+	background: $black
+	.container_au
+		max-width: 500px
+
+		h3
+			color: $white
+			margin-bottom: 50px
+
+		p
+			color: $white
+			text-align: justify
+			font-size: 14px
+
+
+footer
+	background: $black
+	color: $white

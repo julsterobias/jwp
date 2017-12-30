@@ -1,0 +1,118 @@
+/* Mixins */
+/* common css */
+html, body {
+  height: 100%; }
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Nixie One", sans-serif;
+  font-size: 17px;
+  color: #37455f;
+  overflow-x: hidden;
+  line-height: 25px;
+  font-weight: 400; }
+
+.padd2 {
+  padding: 2px; }
+
+.padd3 {
+  padding: 3px; }
+
+.padd4 {
+  padding: 4px; }
+
+.padd5 {
+  padding: 5px; }
+
+.padd10 {
+  padding: 10px; }
+
+.padd20 {
+  padding: 20px; }
+
+.padd30 {
+  padding: 30px; }
+
+.padd40 {
+  padding: 40px; }
+
+.padd50 {
+  padding: 50px; }
+
+.padd60 {
+  padding: 60px; }
+
+.padd70 {
+  padding: 70px; }
+
+.padd80 {
+  padding: 80px; }
+
+.padd90 {
+  padding: 90px; }
+
+.padd100 {
+  padding: 100px; }
+
+.margin10 {
+  margin: 10px; }
+
+.margin20 {
+  margin: 20px; }
+
+.margin30 {
+  margin: 30px; }
+
+.margin40 {
+  margin: 40px; }
+
+.margin50 {
+  margin: 50px; }
+
+.margin60 {
+  margin: 60px; }
+
+.margin70 {
+  margin: 70px; }
+
+.margin80 {
+  margin: 80px; }
+
+.margin90 {
+  margin: 90px; }
+
+.margin100 {
+  margin: 100px; }
+
+.nopadd {
+  padding: 0; }
+
+.nopaddleft {
+  padding-left: 0; }
+
+.nopaddright {
+  padding-right: 0; }
+
+.nopaddtop {
+  padding-top: 0; }
+
+.nopaddbottom {
+  padding-bottom: 0; }
+
+.nomargin {
+  margin: 0 !important; }
+
+.nomarginleft {
+  margin-left: 0 !important; }
+
+.nomarginright {
+  margin-right: 0 !important; }
+
+.nomargintop {
+  margin-top: 0 !important; }
+
+.nomarginbottom {
+  margin-bottom: 0 !important; }
+
+/*# sourceMappingURL=global.css.map */
