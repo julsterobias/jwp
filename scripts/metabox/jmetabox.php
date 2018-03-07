@@ -97,14 +97,44 @@ if(is_admin()):
                     $options = explode("\r\n", $field['args']['meta_field_options'][$key]);
                     $options_saved = explode("[jwp]", $textmetaval);
 ?>
-                    <p><label><?php echo $field['args']['c_metabox_field_name'][$key]; ?></label><br/>
+
+                    <div class="jwp_option_checkbox jwp_field_div_section">
+                    <div><label><?php echo $field['args']['c_metabox_field_name'][$key]; ?></label><br/>
                         <?php 
                         $cnter = 0;
                         foreach($options as $index => $values): $cnter++; ?>
-                            <input type="checkbox" name="<?php echo $metafieldname; ?>[]" id="<?php echo trim(str_replace(" ", "-", $metafieldname).$cnter); ?>" value="<?php echo $values; ?>" <?php echo (in_array($values, $options_saved))? "checked" : NULL; ?>><label for="<?php echo trim(str_replace(" ", "-", $metafieldname).$cnter); ?>">&nbsp;<?php echo $values; ?></label>&nbsp;&nbsp;&nbsp;
+                            <div>
+                            <input type="checkbox" class="<?php echo $metafieldname.'_option_class'; ?>" jwp_target_field="<?php echo $metafieldname; ?>" id="<?php echo trim(str_replace(" ", "-", $metafieldname).$cnter); ?>" value="<?php echo $values; ?>" <?php echo (@in_array($values, $options_saved))? "checked" : NULL; ?>><label for="<?php echo trim(str_replace(" ", "-", $metafieldname).$cnter); ?>">&nbsp;<?php echo $values; ?></label>&nbsp;&nbsp;&nbsp;
+                            </div>
                         <?php endforeach; ?>
                         <i><?php echo $field['args']['c_metabox_field_desc'][$key]; ?></i>
-                    </p>
+                        <input type="hidden" name="<?php echo $metafieldname; ?>" id="<?php echo $metafieldname; ?>" value="<?php echo $textmetaval; ?>">
+                    </div>
+                    <!-- implement jquery to fix the single or none checkbox select -->
+                    <script type="text/javascript">
+                        jQuery(document).ready(function(){
+                            jQuery('.<?php echo $metafieldname.'_option_class'; ?>').click(function(){
+                                var get_target = jQuery(this).attr('jwp_target_field');
+                                jQuery('#'+get_target).val('');
+                                var newcon = "";
+                                for(var cc = 1; cc <= jQuery('.<?php echo $metafieldname.'_option_class'; ?>').length; cc++){
+
+                                    if(jQuery('#<?php echo $metafieldname; ?>'+cc).is(":checked")){
+                                        if(cc < jQuery('.<?php echo $metafieldname.'_option_class'; ?>').length){
+                                            newcon = newcon + jQuery('#<?php echo $metafieldname; ?>'+cc).val()+"[jwp]";
+                                        }else{
+                                            newcon = newcon + jQuery('#<?php echo $metafieldname; ?>'+cc).val();
+                                        }
+                                        
+                                    }
+                                }
+                                jQuery('#'+get_target).val(newcon);
+                            });
+                        });
+                    </script>
+                    </div>
+
+
 <?php
 
                 break;
@@ -114,15 +144,20 @@ if(is_admin()):
                     $options = explode("\r\n", $field['args']['meta_field_options'][$key]);
                     $options_saved = explode("[jwp]", $textmetaval);
 ?>
-                    <p><label><?php echo $field['args']['c_metabox_field_name'][$key]; ?></label><br/>
+                    <div class="jwp_option_radio jwp_field_div_section">
+                    <div><label><?php echo $field['args']['c_metabox_field_name'][$key]; ?></label><br/>
                         <?php 
                         $cnter = 0;
                         foreach($options as $index => $values): $cnter++; ?>
+                            <div>
                             <input type="radio" name="<?php echo $metafieldname; ?>" id="<?php echo trim(str_replace(" ", "-", $metafieldname).$cnter); ?>" value="<?php echo $values; ?>" <?php echo (in_array($values, $options_saved))? "checked" : NULL; ?>><label for="<?php echo trim(str_replace(" ", "-", $metafieldname).$cnter); ?>">&nbsp;<?php echo $values; ?></label>&nbsp;&nbsp;&nbsp;
+                            </div>
                         <?php endforeach; ?>
                         <i><?php echo $field['args']['c_metabox_field_desc'][$key]; ?></i>
-                    </p>
+                    </div>
+                    </div>
 <?php
+
 
                 break;
 
@@ -188,10 +223,12 @@ if(is_admin()):
             return $post->ID;
         }
         if ( !current_user_can( 'edit_post', $post->ID ))
-            return $post->ID;   
-        
+            return $post->ID; 
+
         foreach ($_POST as $key => $value) { 
-            $value = implode('[jwp]', (array)$value); 
+
+            $value = implode('[jwp]', (array)$value);
+
             if(get_post_meta($post->ID, $key, FALSE)) { 
                 update_post_meta($post->ID, $key, $value);
             } else { 
