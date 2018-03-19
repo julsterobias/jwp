@@ -166,20 +166,22 @@ if(is_admin()):
 ?>
                   
                     <p><label><?php echo $field['args']['c_metabox_field_name'][$key]; ?></label></p>
-                    <p id="expo_logo_holder"><?php if($textmetaval): ?><img src="<?php echo $textmetaval; ?>"><?php endif; ?></p>
+                    <p id="<?php echo $metafieldname; ?>_holder"><?php if($textmetaval): ?><img src="<?php echo $textmetaval; ?>"><?php endif; ?></p>
                     <p>
-                    <input type="text" id="<?php echo $metafieldname; ?>" name="<?php echo $metafieldname; ?>" class="widefat" value="<?php echo $textmetaval; ?>" /> 
+                    <input type="text" id="<?php echo $metafieldname; ?>_text" name="<?php echo $metafieldname; ?>" class="widefat" value="<?php echo $textmetaval; ?>" /> 
                         <i><?php echo $field['args']['c_metabox_field_desc'][$key]; ?></i>
                     </p>
                     <p>
-                    <button id="expo_logo_select" class="button button-primary button-large">Select Featured Image</button>
+                    <button id="<?php echo $metafieldname; ?>_btn" class="button button-primary button-large">Select Featured Image</button>
                     </p>
+                    <hr/>
+
              
 
                    
                     <script type="text/javascript">
                             jQuery(document).ready(function($){
-                                $('#expo_logo_select').click(function(e) {
+                                $('#<?php echo $metafieldname; ?>_btn').click(function(e) {
                                     e.preventDefault();
                                     var image = wp.media({ 
                                         title: 'Select Logo',
@@ -195,8 +197,8 @@ if(is_admin()):
                                         var image_url = uploaded_image.toJSON().url;
                                         var image_title = uploaded_image.toJSON().title;
                                         // Let's assign the url value to the input field
-                                        $('#<?php echo $metafieldname; ?>').val(image_url);
-                                        $('#expo_logo_holder').html('<img src="'+image_url+'" >');
+                                        $('#<?php echo $metafieldname; ?>_text').val(image_url);
+                                        $('#<?php echo $metafieldname; ?>_holder').html('<img src="'+image_url+'" >');
                                     });
                                 });
                             });
