@@ -161,7 +161,7 @@ if(is_admin()):
 
                 break;
 
-                case 'media_upload_single':
+                case 'media_upload':
 
 ?>
                   
