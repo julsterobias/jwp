@@ -198,7 +198,7 @@ if(is_admin()):
                                         var image_title = uploaded_image.toJSON().title;
                                         // Let's assign the url value to the input field
                                         $('#<?php echo $metafieldname; ?>_text').val(image_url);
-                                        $('#<?php echo $metafieldname; ?>_holder').html('<img src="'+image_url+'" width="100%" >');
+                                        $('#<?php echo $metafieldname; ?>_holder').html('<img src="'+image_url+'" style="max-width:100%;" >');
                                     });
                                 });
                             });
