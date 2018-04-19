@@ -166,7 +166,7 @@ if(is_admin()):
 ?>
                   
                     <p><label><?php echo $field['args']['c_metabox_field_name'][$key]; ?></label></p>
-                    <p id="<?php echo $metafieldname; ?>_holder"><?php if($textmetaval): ?><img src="<?php echo $textmetaval; ?>" width="100%"><?php endif; ?></p>
+                    <p id="<?php echo $metafieldname; ?>_holder"><?php if($textmetaval): ?><img src="<?php echo $textmetaval; ?>" style="max-width: 100%;"><?php endif; ?></p>
                     <p>
                     <input type="text" id="<?php echo $metafieldname; ?>_text" name="<?php echo $metafieldname; ?>" class="widefat" value="<?php echo $textmetaval; ?>" /> 
                         <i><?php echo $field['args']['c_metabox_field_desc'][$key]; ?></i>
