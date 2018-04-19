@@ -135,7 +135,7 @@ if(is_admin()):
                                            <option value="textarea">TextArea</option>
                                            <option value="date">Date</option>
                                            <option value="number">Number</option>
-                                           <option value="media_upload_single">Single Media</option>
+                                           <option value="media_upload">Single Media</option>
                                            <option value="media_upload" disabled>Media Set</option>
                                        </select>
                                     </p>
