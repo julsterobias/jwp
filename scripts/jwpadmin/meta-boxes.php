@@ -91,14 +91,26 @@ if(is_admin()):
                                 </div>
                                 <br/>
                                 <h3>Fields</h3>
-                                <table class="widefat" id="new_c_meta_table">
-                                    <tr>
-                                        <th><b>Field Name</b></th>
-                                        <th><b>Field Type</b></th>
-                                        <th><b>Field Description</b></th>
-                                        <th>&nbsp;</th>
-                                    </tr>
-                                </table>
+
+                                
+
+                                <div>
+                                    <ul>
+                                        <li>
+                                            <table class="widefat">
+                                                <tr>
+                                                    <th width="25%"><b>Field Name</b></th>
+                                                    <th width="25%"><b>Field Type</b></th>
+                                                    <th width="25%"><b>Field Description</b></th>
+                                                    <th width="25%">&nbsp;</th>
+                                                </tr>
+                                            </table>
+                                        </li>
+                                    </ul>
+                                    <ul id="new_c_meta_table">
+                                        
+                                    </ul>
+                                </div>
 
                                 <div class="jwp_metabox_field" >
 
@@ -159,6 +171,13 @@ if(is_admin()):
                
 </div>
 
+<script>
+  jQuery( function() {
+    jQuery( "#new_c_meta_table" ).sortable();
+    jQuery( "#new_c_meta_table" ).disableSelection();
+  } );
+</script>
+
 <script type="text/javascript">
     var rowbncnt = 0;
     jQuery("#meta_field_type").change(function(){
@@ -187,11 +206,11 @@ if(is_admin()):
 
             rowbncnt++;
 
-            var data = "<tr id=\"row_add_"+rowbncnt+"\">"+
-            "<td>"+c_metabox_field_name+" <input type=\"hidden\" name=\"c_metabox_field_name[]\" value=\""+c_metabox_field_name+"\" /></td>"+
-            "<td>"+meta_field_type+" <input type=\"hidden\" name=\"meta_field_type[]\" value=\""+meta_field_type+"\" /><input type=\"hidden\" name=\"meta_field_options[]\" value=\""+field_options+"\" /></td>"+
-            "<td>"+c_metabox_field_desc+" <input type=\"hidden\" name=\"c_metabox_field_desc[]\" value=\""+c_metabox_field_desc+"\" /></td>"+
-            "<td align=\"right\"><a href=\"javascript:void()\" onclick=\"DeleteMetaField("+rowbncnt+")\">Delete</a></td>"+
+            var data = "<li id=\"row_add_"+rowbncnt+"\"><table class=\"widefat\"><tr>"+
+            "<td width=\"25%\">"+c_metabox_field_name+" <input type=\"hidden\" name=\"c_metabox_field_name[]\" value=\""+c_metabox_field_name+"\" /></td>"+
+            "<td width=\"25%\">"+meta_field_type+" <input type=\"hidden\" name=\"meta_field_type[]\" value=\""+meta_field_type+"\" /><input type=\"hidden\" name=\"meta_field_options[]\" value=\""+field_options+"\" /></td>"+
+            "<td width=\"25%\">"+c_metabox_field_desc+" <input type=\"hidden\" name=\"c_metabox_field_desc[]\" value=\""+c_metabox_field_desc+"\" /></td>"+
+            "<td width=\"25%\" align=\"right\"><a href=\"javascript:void()\" onclick=\"DeleteMetaField("+rowbncnt+")\">Delete</a></td></table></li>"+
             "</tr>";
 
             jQuery('#new_c_meta_table').append(data);

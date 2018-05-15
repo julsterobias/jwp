@@ -67,53 +67,69 @@ if(is_admin()):
                                 </div>
                                 <br/>
                                 <h3 id="new_c_meta_table_title">Fields</h3>
-                                <table class="widefat" id="new_c_meta_table">
-                                    <tr>
-                                        <th><b>Field Name</b></th>
-                                        <th><b>Field Type</b></th>
-                                        <th><b>Field Description</b></th>
-                                        <th>&nbsp;</th>
-                                    </tr>
-                                 
-                                    <?php
-                                    	$rowcnt = 0; 
-                                    	if($get_vals->c_metabox_field_name):
-	                                	foreach($get_vals->c_metabox_field_name as $index => $value):
-	                                		$rowcnt++;
-	                                ?>
-	                                <tr id="meta_field_<?php echo $rowcnt; ?>">
-                                    	<td><span id="tble_lable_fn_<?php echo $rowcnt; ?>"><?php echo $value; ?></span>
-                                    	<input type="hidden" name="c_metabox_field_name[]" id="rowcnt_fn_<?php echo $rowcnt; ?>" value="<?php echo $value; ?>" />
-                                    	</td>
-                                    	<td><span id="tble_lable_ft_<?php echo $rowcnt; ?>"><?php echo $get_vals->meta_field_type[$index]; ?></span>
-                                    	<input type="hidden" name="meta_field_type[]" id="rowcnt_ft_<?php echo $rowcnt; ?>" value="<?php echo $get_vals->meta_field_type[$index]; ?>" />
 
-                                    	<?php 
-                                    		if($get_vals->meta_field_type[$index] == "select" || $get_vals->meta_field_type[$index] == "radio" || $get_vals->meta_field_type[$index] == "checkbox"):
-                                    	?>
-                                    		<textarea style="visibility: hidden; height: 0px;"  name="meta_field_options[]" id="rowcnt_op_<?php echo $rowcnt; ?>"><?php echo $get_vals->meta_field_options[$index]; ?></textarea>
-                                    	<?php
-                                    		else:
-                                    	?>
-                                    		<textarea style="visibility: hidden; height: 0px;"  name="meta_field_options[]" id="rowcnt_op_<?php echo $rowcnt; ?>"> </textarea>
-                                    	<?php
-                                    		endif;
-                                    	?>
-                                    		<div id="options_<?php echo $rowcnt; ?>">
-                                    			<hr/>
-                                    			<?php echo str_replace("\r\n", ", ", $get_vals->meta_field_options[$index]); ?>
-                                    		</div>
-                                    	</td>
-                                    	<td><span id="tble_lable_fd_<?php echo $rowcnt; ?>"><?php echo $get_vals->c_metabox_field_desc[$index]; ?></span>
-                                    	<input type="hidden" name="c_metabox_field_desc[]" id="rowcnt_fd_<?php echo $rowcnt; ?>" value="<?php echo $get_vals->c_metabox_field_desc[$index]; ?>" /></td>
-                                    	<td align="right"><a href="#jwp_metabox_field_edit_field" onclick="AsignMetaBox(<?php echo $rowcnt; ?>)">Edit</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="javascript:void(0);" onclick="DeleteMetaField(<?php echo $rowcnt; ?>)">Delete</a></td>
-                                    </tr>
-                                    <?php 
-                                    	endforeach;
-                                    	endif;
-                                    ?>
-                                   
-                                </table>
+
+
+                                <div>
+                                    <ul>
+                                        <li>
+                                            <table class="widefat">
+                                                <tr>
+                                                    <th width="25%"><b>Field Name</b></th>
+                                                    <th width="25%"><b>Field Type</b></th>
+                                                    <th width="25%"><b>Field Description</b></th>
+                                                    <th width="25%">&nbsp;</th>
+                                                </tr>
+                                            </table>
+                                        </li>
+                                    </ul>
+                                    <ul id="new_c_meta_table">
+                                          <?php
+                                            	$rowcnt = 0; 
+                                            	if($get_vals->c_metabox_field_name):
+        	                                	foreach($get_vals->c_metabox_field_name as $index => $value):
+        	                                		$rowcnt++;
+        	                                ?>
+                                          <li id="meta_field_<?php echo $rowcnt; ?>">
+                                              <table class="widefat">
+            	                                <tr>
+                                                	<td width="25%"><span id="tble_lable_fn_<?php echo $rowcnt; ?>"><?php echo $value; ?></span>
+                                                	<input type="hidden" name="c_metabox_field_name[]" id="rowcnt_fn_<?php echo $rowcnt; ?>" value="<?php echo $value; ?>" />
+                                                	</td>
+                                                	<td width="25%"><span id="tble_lable_ft_<?php echo $rowcnt; ?>"><?php echo $get_vals->meta_field_type[$index]; ?></span>
+                                                	<input type="hidden" name="meta_field_type[]" id="rowcnt_ft_<?php echo $rowcnt; ?>" value="<?php echo $get_vals->meta_field_type[$index]; ?>" />
+
+                                                	<?php 
+                                                		if($get_vals->meta_field_type[$index] == "select" || $get_vals->meta_field_type[$index] == "radio" || $get_vals->meta_field_type[$index] == "checkbox"):
+                                                	?>
+                                                		<textarea style="visibility: hidden; height: 0px;"  name="meta_field_options[]" id="rowcnt_op_<?php echo $rowcnt; ?>"><?php echo $get_vals->meta_field_options[$index]; ?></textarea>
+                                                	<?php
+                                                		else:
+                                                	?>
+                                                		<textarea style="visibility: hidden; height: 0px;"  name="meta_field_options[]" id="rowcnt_op_<?php echo $rowcnt; ?>"> </textarea>
+                                                	<?php
+                                                		endif;
+                                                	?>
+                                                		<div id="options_<?php echo $rowcnt; ?>">
+                                                			<hr/>
+                                                			<?php echo str_replace("\r\n", ", ", $get_vals->meta_field_options[$index]); ?>
+                                                		</div>
+                                                	</td>
+                                                	<td width="25%"><span id="tble_lable_fd_<?php echo $rowcnt; ?>"><?php echo $get_vals->c_metabox_field_desc[$index]; ?></span>
+                                                	<input type="hidden" name="c_metabox_field_desc[]" id="rowcnt_fd_<?php echo $rowcnt; ?>" value="<?php echo $get_vals->c_metabox_field_desc[$index]; ?>" /></td>
+                                                	<td width="25%" align="right"><a href="#jwp_metabox_field_edit_field" onclick="AsignMetaBox(<?php echo $rowcnt; ?>)">Edit</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="javascript:void(0);" onclick="DeleteMetaField(<?php echo $rowcnt; ?>)">Delete</a></td>
+                                                </tr>
+                                                </table>
+                                            </li>
+                                            <?php 
+                                            	endforeach;
+                                            	endif;
+                                            ?>
+                                           
+                                        
+
+                                  </ul>
+                                </div>
 
                                 <div class="jwp_metabox_field" ><a name="jwp_metabox_field_edit_field"></a>
 
@@ -179,10 +195,15 @@ if(is_admin()):
 
 	</div>
 </div>
-
+<script>
+  jQuery( function() {
+    jQuery( "#new_c_meta_table" ).sortable();
+    jQuery( "#new_c_meta_table" ).disableSelection();
+  } );
+</script>
 <script type="text/javascript">
 
-	var toedit = 0;
+	var toedit = <?php echo $rowcnt; ?>;
     jQuery("#meta_field_type").change(function(){
         var gettarget = jQuery("#meta_field_type option:selected").attr('target_div');
         jQuery(".options_select").hide();
@@ -207,12 +228,14 @@ if(is_admin()):
             var meta_type = jQuery('#meta_type').val();
             var meta_priority = jQuery('#meta_priority').val();
 
-            var data = "<tr>"+
-            "<td>"+c_metabox_field_name+" <input type=\"hidden\" name=\"c_metabox_field_name[]\" value=\""+c_metabox_field_name+"\" /></td>"+
-            "<td>"+meta_field_type+" <input type=\"hidden\" name=\"meta_field_type[]\" value=\""+meta_field_type+"\" /><textarea style=\"visibility: hidden; height: 0px;\" name=\"meta_field_options[]\" >"+field_options+"</textarea></td>"+
-            "<td>"+c_metabox_field_desc+" <input type=\"hidden\" name=\"c_metabox_field_desc[]\" value=\""+c_metabox_field_desc+"\" /></td>"+
-            "<td align=\"right\"><a href=\"javascript:void()\" onclick=\"DeleteMetaField()\">Delete</a></td>"+
-            "</tr>";
+            toedit++;
+
+            var data = "<li id=\"meta_field_"+toedit+"\"><table class=\"widefat\"><tr>"+
+            "<td width=\"25%\">"+c_metabox_field_name+" <input type=\"hidden\" name=\"c_metabox_field_name[]\" value=\""+c_metabox_field_name+"\" /></td>"+
+            "<td width=\"25%\">"+meta_field_type+" <input type=\"hidden\" name=\"meta_field_type[]\" value=\""+meta_field_type+"\" /><textarea style=\"visibility: hidden; height: 0px;\" name=\"meta_field_options[]\" >"+field_options+"</textarea></td>"+
+            "<td width=\"25%\">"+c_metabox_field_desc+" <input type=\"hidden\" name=\"c_metabox_field_desc[]\" value=\""+c_metabox_field_desc+"\" /></td>"+
+            "<td width=\"25%\" align=\"right\"><a href=\"javascript:void()\" onclick=\"DeleteMetaField("+toedit+")\">Delete</a></td>"+
+            "</tr></table></li>";
 
             jQuery('#new_c_meta_table').append(data);
 

@@ -63,3 +63,5 @@ h3{ margin-top: 0px !important; }
 .jwp_metabox_field{ border: 1px solid #e5e5e5; padding: 20px; margin-top: 20px; }
 .jwp_metabox_field p:first-child{ margin-top: 0; }
 .jwp_metabox_field p:last-child{ margin-bottom: 0; }
+
+#new_c_meta_table li{ cursor: move; }
