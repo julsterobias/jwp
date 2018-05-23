@@ -17,19 +17,12 @@ class jwp_extClass{
 	function jwp_Add_Menu() {
 		add_menu_page(__('jwp settings','general_menu'), __('jwptemplate','general_menu'),'', 'jwp-settings', 'jwp_settings','dashicons-admin-generic');
 		add_submenu_page('jwp-settings', __('General','general_menu'), __('General','jwp-settings'), 7, 'general', array( $this, 'jwp_CallFallBack' ));
-
-		add_menu_page(__('participants panel','participant_menu'), __('Participants','participants_panel'),'', 'participants-panel', 'participants_panel','dashicons-groups');
-
-		add_submenu_page('participants-panel', __('Entries','participant_menu'), __('Entries','participants-panel'), 7, 'participant-entries', array( $this, 'jwp_Participants' ));
 	}
 	
 	function jwp_CallFallBack(){
 		include('jwpadmin/general.php');
 	}
 
-	function jwp_Participants(){
-		include('jwpadmin/participants.php');
-	}
 
 	function ExecCustomData(){
 		global $wpdb;
@@ -251,51 +244,8 @@ class jwp_extClass{
 
 	function jwpGetContent($args_param = NULL){
 		$data = array();
-
 		if($args_param):
-			$num_post = (isset($args_param['posts_per_page']))? $args_param['posts_per_page'] : -1;
-			$post_type = (isset($args_param['post_type']))? $args_param['post_type'] : "post";
-			$order = (isset($args_param['order']))? $args_param['order'] : "ASC";
-			$orderby = (isset($args_param['orderby']))? $args_param['orderby'] : "menu_order";
-			$post_status = (isset($args_param['post_status']))? $args_param['post_status'] : "publish";
-
-			$args = array(
-				'posts_per_page' => $num_post,
-				'post_type' => $post_type,
-				'order' => $order,
-				'orderby' => $orderby,
-				'post_status' => $post_status
-			);
-
-			if(isset($args_param['taxonomy'])):
-				$args['tax_query'] = array(
-					array(
-						'taxonomy' => $args_param['taxonomy']['taxonomy_name'],
-						'field' => 'slug',
-						'terms' => $args_param['taxonomy']['terms']
-					)
-				);
-			endif;
-
-			if(isset($args_param['metabox'])):
-				$args['meta_query'] = array(
-					array(
-						'key' => $args_param['metabox']['key'],
-						'value' => $args_param['metabox']['value'],
-						'compare' => $args_param['metabox']['compare']
-					)
-				);
-			endif;
-
-			if(isset($args_param['page_id'])):
-				$args['page_id'] = $args_param['page_id'];
-			endif;
-
-			if(isset($args_param['post__not_in'])):
-				$args['post__not_in'] = $args_param['post__not_in'];
-			endif;
-
-			$settings = new WP_query($args);
+			$settings = new WP_query($args_param);
 			if($settings->have_posts()):
 				while($settings->have_posts()): $settings->the_post();
 					$id = get_the_ID();
@@ -308,13 +258,15 @@ class jwp_extClass{
 						$key = str_replace("-", "_", $key);
 						$metas[$key] = (is_array($value))? $value[0] : $value;
 					}
+					$cates = get_the_category($id);
 					$data[$slug] = array(
 						'id' => $id,
 						'title' => get_the_title(),
 						'content' => get_the_content(),
 						'featured_image' => $image[0],
 						'url' => get_the_permalink(),
-						'metabox' => $metas
+						'metabox' => $metas,
+						'category' => $cates
 					);
 				endwhile;
 			endif;
@@ -327,11 +279,17 @@ class jwp_extClass{
 	}	
 
 }
+
+
 session_start();
+
 $jwp = new jwp_extClass();
 global $jwp, $wpdb;
+
 $jwp->ExecCustomData();
+
 if(is_admin()){
 	$jwp->IncludeUIToAdmin();
 }
+
 ?>
